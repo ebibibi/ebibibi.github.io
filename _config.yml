@@ -6,6 +6,9 @@ timezone: Asia/Tokyo
 url: "https://ebibibi.github.io"
 baseurl: ""
 
+# 日本時間(JST)で書いた日付がビルド時刻(UTC)より先になっても公開されるように
+future: true
+
 # 投稿URLは /blog/YYYY/MM/DD/タイトル/ の形になります
 permalink: /blog/:year/:month/:day/:title/
 
