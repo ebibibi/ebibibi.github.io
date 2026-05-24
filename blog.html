@@ -1,0 +1,23 @@
+---
+layout: default
+title: ブログ
+permalink: /blog/
+---
+<h1 class="page-title">ブログ</h1>
+<div class="post-meta">これまでの記事一覧</div>
+
+<div class="card">
+  {% if site.posts.size > 0 %}
+  <ul class="post-list">
+    {% for post in site.posts %}
+    <li>
+      <span class="date">{{ post.date | date: "%Y年%-m月%-d日" }}</span>
+      <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      {% if post.excerpt %}<p>{{ post.excerpt | strip_html | truncate: 80 }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>まだ記事がありません。</p>
+  {% endif %}
+</div>

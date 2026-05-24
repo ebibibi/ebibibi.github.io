@@ -1,0 +1,26 @@
+title: 胡田昌彦
+description: 胡田昌彦のブログ
+lang: ja
+timezone: Asia/Tokyo
+
+url: "https://ebibibi.github.io"
+baseurl: ""
+
+# 投稿URLは /blog/YYYY/MM/DD/タイトル/ の形になります
+permalink: /blog/:year/:month/:day/:title/
+
+# _posts 配下の .md には自動で post レイアウトが適用されます
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+# Markdown は GitHub Pages 標準の kramdown で変換します
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md

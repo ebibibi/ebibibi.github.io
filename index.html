@@ -1,3 +1,7 @@
+---
+# この --- で囲んだ部分（フロントマター）は、Jekyll にこのページを
+# 処理させて、下の「ブログ」セクションに最新記事を自動表示するためのものです。
+---
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -62,6 +66,14 @@
     .links a:hover { background: var(--accent-dark); }
     footer { text-align: center; color: var(--muted); padding: 40px 24px; font-size: 0.85rem; }
     .muted { color: var(--muted); }
+    .post-list { list-style: none; }
+    .post-list li { padding: 12px 0; border-bottom: 1px solid #eef0f7; }
+    .post-list li:last-child { border-bottom: none; }
+    .post-list .date { color: var(--muted); font-size: 0.85rem; margin-right: 10px; }
+    .post-list a { color: var(--text); text-decoration: none; font-weight: 700; }
+    .post-list a:hover { color: var(--accent-dark); }
+    .more-link { display: inline-block; margin-top: 18px; color: var(--accent-dark); text-decoration: none; font-weight: 600; }
+    .more-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -105,9 +117,29 @@
     </section>
 
     <section>
+      <h2>ブログ</h2>
+      <div class="card">
+        {% if site.posts.size > 0 %}
+        <ul class="post-list">
+          {% for post in site.posts limit:5 %}
+          <li>
+            <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        <a class="more-link" href="{{ '/blog/' | relative_url }}">記事一覧へ →</a>
+        {% else %}
+        <p>まだ記事がありません。</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <section>
       <h2>連絡先・リンク</h2>
       <div class="card">
         <div class="links">
+          <a href="{{ '/blog/' | relative_url }}">ブログ</a>
           <!-- ↓ YouTube はご自分のチャンネルURLに差し替えてください -->
           <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
           <a href="https://github.com/ebibibi" target="_blank" rel="noopener">GitHub</a>

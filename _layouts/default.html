@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <style>
+    :root {
+      --accent: #4f6df5;
+      --accent-dark: #3a52c9;
+      --text: #1f2330;
+      --muted: #6b7280;
+      --bg: #f7f8fc;
+      --card: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+    }
+    .topbar {
+      background: var(--card);
+      border-bottom: 1px solid #e7e9f2;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .topbar .inner {
+      max-width: 760px; margin: 0 auto; padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar a.brand { font-weight: 700; color: var(--text); text-decoration: none; font-size: 1.1rem; }
+    .topbar nav a {
+      color: var(--accent-dark); text-decoration: none; font-weight: 600; margin-left: 20px;
+    }
+    .topbar nav a:hover { text-decoration: underline; }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    main { padding: 48px 0; }
+    h1.page-title {
+      font-size: 1.9rem; margin-bottom: 8px;
+    }
+    .post-meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+    .card {
+      background: var(--card); border-radius: 14px; padding: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    /* 記事一覧 */
+    .post-list { list-style: none; }
+    .post-list li { padding: 16px 0; border-bottom: 1px solid #eef0f7; }
+    .post-list li:last-child { border-bottom: none; }
+    .post-list .date { color: var(--muted); font-size: 0.85rem; display: block; }
+    .post-list a.post-link {
+      color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.1rem;
+    }
+    .post-list a.post-link:hover { color: var(--accent-dark); }
+    /* 記事本文 */
+    .post-body { margin-top: 8px; }
+    .post-body h2 { font-size: 1.35rem; margin: 32px 0 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px; display: inline-block; }
+    .post-body h3 { font-size: 1.1rem; margin: 24px 0 10px; }
+    .post-body p { margin: 14px 0; }
+    .post-body ul, .post-body ol { margin: 14px 0 14px 1.4em; }
+    .post-body li { margin: 4px 0; }
+    .post-body a { color: var(--accent-dark); }
+    .post-body img { max-width: 100%; height: auto; border-radius: 10px; }
+    .post-body blockquote {
+      border-left: 4px solid var(--accent); margin: 16px 0; padding: 4px 16px;
+      color: var(--muted); background: #f0f2fb; border-radius: 0 8px 8px 0;
+    }
+    .post-body pre {
+      background: #1f2330; color: #f7f8fc; padding: 16px; border-radius: 10px;
+      overflow-x: auto; font-size: 0.9rem; margin: 16px 0;
+    }
+    .post-body code {
+      background: #eef1ff; color: var(--accent-dark); padding: 2px 6px;
+      border-radius: 6px; font-size: 0.9em;
+    }
+    .post-body pre code { background: none; color: inherit; padding: 0; }
+    .back-link { display: inline-block; margin-top: 32px; color: var(--accent-dark); text-decoration: none; font-weight: 600; }
+    .back-link:hover { text-decoration: underline; }
+    footer { text-align: center; color: var(--muted); padding: 40px 24px; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="inner">
+      <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <nav>
+        <a href="{{ '/' | relative_url }}">ホーム</a>
+        <a href="{{ '/blog/' | relative_url }}">ブログ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {{ content }}
+  </main>
+
+  <footer>
+    &copy; {{ 'now' | date: "%Y" }} {{ site.title }}
+  </footer>
+
+</body>
+</html>

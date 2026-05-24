@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<article>
+  <h1 class="page-title">{{ page.title }}</h1>
+  <div class="post-meta">{{ page.date | date: "%Y年%-m月%-d日" }}</div>
+  <div class="card">
+    <div class="post-body">
+      {{ content }}
+    </div>
+  </div>
+  <a class="back-link" href="{{ '/blog/' | relative_url }}">← ブログ一覧へ戻る</a>
+</article>
